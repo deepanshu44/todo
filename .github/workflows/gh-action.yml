@@ -33,7 +33,8 @@ jobs:
       - name: Run a one-line script
         run: |
          echo ${{matrix.val1}} ${{matrix.val2}}
-
+      - name : rust
+        run: cargo check
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |

@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         val1: [hello]
-        val2: [world]
+        val2: [world,again]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:

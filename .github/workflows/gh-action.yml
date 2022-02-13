@@ -1,4 +1,4 @@
-name: Node.js CI
+name: CI
 on: [push]
 jobs:
   build:
@@ -9,13 +9,13 @@ jobs:
           #default run with no feature flags
           feature-flag: [no-ff]
           include:
-           - napi: 1
+           - napi: napi-1
              feature-flag: proc-macros
-           - napi: 1
+           - napi: napi-1
              feature-flag: try-catch-api
-           - napi: 4
+           - napi: napi-4
              feature-flag: channel-api
-           - napi: 6
+           - napi: napi-6
              feature-flag: channel-api
     steps:
       - if: matrix.feature-flag == 'no-ff'

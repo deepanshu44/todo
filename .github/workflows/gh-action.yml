@@ -10,13 +10,17 @@ jobs:
           feature-flag: [no-ff]
           include:
            - napi: 1
-             feature-flag: 1
+             feature-flag: proc-macros
            - napi: 1
-             feature-flag: 2
+             feature-flag: try-catch-api
+           - napi: 4
+             feature-flag: channel-api
+           - napi: 6
+             feature-flag: channel-api
     steps:
       - if: matrix.feature-flag == 'no-ff'
-        name: run cargo check with no feature flag
+        name: running cargo check with no feature flag
         run: echo "run cargo check with no feature flag"
-      - name: run cargo check with a feature flag
+      - name: running cargo check with a feature flag
         if: matrix.feature-flag != 'no-ff'
-        run: echo "run cargo check with a feature flag"
+        run: echo "run cargo check with feature flag" ${{matrix.feature-flag}}

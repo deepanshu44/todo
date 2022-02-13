@@ -6,7 +6,7 @@ jobs:
     strategy:
       matrix:
           node: [8, 10, 12, 14]
-          exp: [no_ff]
+          exp: [noff]
           include:
         # excludes node 8 on macOS
            -  node: 8
@@ -15,7 +15,7 @@ jobs:
       - name: Echo site details
         run: echo ${{matrix.os}} ${{matrix.node}}
       - name: extra step
-        if: matrix.exp == "no_ff"
+        if: matrix.exp == "no-ff"
         run: echo running ${{matrix.os}} ${{matrix.node}}
       - name: Every time
         run: echo "This step will always run"

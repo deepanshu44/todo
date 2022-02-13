@@ -9,11 +9,7 @@ jobs:
           include:
         # excludes node 8 on macOS
            -  node: 8
-              exp: true
-           - os: ubuntu-18.04
-             node: LTS
-           - node: 8
-             exp: false
+              exp: 1
     steps:
       - name: Echo site details
         run: echo ${{matrix.os}} ${{matrix.node}}

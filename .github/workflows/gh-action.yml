@@ -11,7 +11,7 @@ jobs:
         # excludes node 8 on macOS
            - os: macos-latest
              node: 8
-             exp: true
+             exp: trues
            - os: ubuntu-18.04
              node: LTS
     steps:

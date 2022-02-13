@@ -12,6 +12,8 @@ jobs:
            - os: macos-latest
              node: 8
              exp: true
+           - os: ubuntu-18.04
+             node: LTS
     steps:
       - name: Echo site details
         run: echo ${{matrix.os}} ${{matrix.node}}

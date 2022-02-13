@@ -6,6 +6,7 @@ jobs:
     strategy:
       matrix:
           node: [8, 10, 12, 14]
+          exp: [false]
           include:
         # excludes node 8 on macOS
            -  node: 8

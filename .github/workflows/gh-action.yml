@@ -5,17 +5,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-          node: [8, 10, 12, 14]
-          exp: [no-ff]
+          napi: [1,2,3,4,5,6,experimental]
+          #default run with no feature flags
+          feature-flag: [no-ff]
           include:
-        # excludes node 8 on macOS
-           -  node: 8
-              exp: 1
+           - napi: 1
+             feature-flag: 1
+           - napi: 1
+             feature-flag: 2
     steps:
-      - name: Echo site details
-        run: echo ${{matrix.os}} ${{matrix.node}}
-      - name: extra step
+      - name: run cargo check with no feature flag
         if: matrix.exp == 'no-ff'
-        run: echo running ${{matrix.os}} ${{matrix.node}}
-      - name: Every time
-        run: echo "This step will always run"
+        run: echo "run cargo check with no feature flag"
+      - name: run cargo check with a feature flag
+        if: matrix.exp != 'no-ff'
+        run: echo "run cargo check with a feature flag"

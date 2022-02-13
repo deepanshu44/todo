@@ -5,14 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-          os: [macos-latest, windows-latest, ubuntu-18.04]
           node: [8, 10, 12, 14]
-          et: []
           include:
         # excludes node 8 on macOS
-           - os: macos-latest
-             node: 8
-             exp: trues
+           -  node: 8
+              exp: trues
            - os: ubuntu-18.04
              node: LTS
     steps:

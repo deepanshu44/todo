@@ -23,6 +23,10 @@ jobs:
       matrix:
         val1: [hello]
         val2: [world,again]
+        include:
+        - val: again
+          exp: 2x
+          
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -32,7 +36,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-         echo ${{matrix.val1}} ${{matrix.val2}}
+         echo ${{matrix.val1}} ${{matrix.val2}} ${{matrix.exp}}
      
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script

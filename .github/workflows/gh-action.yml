@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-          napi: [1,2,3,4,5,6,experimental]
+          napi: [napi-1,napi-2,napi-3,napi-4,napi-5,napi-6,napi-experimental]
           #default run with no feature flags
           feature-flag: [no-ff]
           include:
@@ -20,7 +20,7 @@ jobs:
     steps:
       - if: matrix.feature-flag == 'no-ff'
         name: running cargo check with no feature flag
-        run: echo "run cargo check with no feature flag"
+        run: echo cargo check --no-default-features --features=${{matrix.napi}}
       - name: running cargo check with a feature flag
         if: matrix.feature-flag != 'no-ff'
-        run: echo "run cargo check with feature flag" ${{matrix.feature-flag}}
+        run: echo cargo check --no-default-features --features=${{matrix.napi}},${{matrix.feature-flag}}

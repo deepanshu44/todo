@@ -14,8 +14,8 @@ jobs:
            - napi: 1
              feature-flag: 2
     steps:
-      - name: run cargo check with no feature flag
-        if: matrix.exp == 'no-ff'
+      - if: matrix.exp == 'no-ff'
+        name: run cargo check with no feature flag
         run: echo "run cargo check with no feature flag"
       - name: run cargo check with a feature flag
         if: matrix.exp != 'no-ff'

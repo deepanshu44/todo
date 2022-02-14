@@ -24,3 +24,7 @@ jobs:
       - name: running cargo check with a feature flag
         if: matrix.feature-flag != 'no-ff'
         run: echo cargo check --no-default-features --features=${{matrix.napi}},${{matrix.feature-flag}}
+      - name: test
+        uses: ./../../../action/action.yml@v2
+        with:
+          who-to-greet: 'Mona the Octocat'

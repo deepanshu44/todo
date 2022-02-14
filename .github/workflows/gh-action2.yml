@@ -1,0 +1,31 @@
+name: CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # strategy:
+    #   matrix:
+          # napi: [napi-1,napi-2,napi-3,napi-4,napi-5,napi-6,napi-experimental]
+          #default run with no feature flags
+          # feature-flag: [no-ff]
+          # include:
+          #  - napi: napi-1
+          #    feature-flag: proc-macros
+          #  - napi: napi-1
+          #    feature-flag: try-catch-api
+          #  - napi: napi-4
+          #    feature-flag: channel-api
+          #  - napi: napi-6
+          #    feature-flag: channel-api
+    steps:
+      - uses: actions/checkout@v2
+      - if: matrix.feature-flag == 'no-ff'
+        name: running cargo check with no feature flag
+        run: echo cargo check --no-default-features --features=${{matrix.napi}}
+      - name: running cargo check with a feature flag
+        if: matrix.feature-flag != 'no-ff'
+        run: echo cargo check --no-default-features --features=${{matrix.napi}},${{matrix.feature-flag}}
+      - name: test
+        uses: ./.github/workflows/actions/action1
+        with:
+          name: 'Mona the Octocat'

@@ -18,6 +18,7 @@ jobs:
            - napi: napi-6
              feature-flag: channel-api
     steps:
+      - uses: actions/checkout@v2
       - if: matrix.feature-flag == 'no-ff'
         name: running cargo check with no feature flag
         run: echo cargo check --no-default-features --features=${{matrix.napi}}
